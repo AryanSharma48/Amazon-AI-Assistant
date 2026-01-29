@@ -1,0 +1,17 @@
+{
+    "manifest_version" : 3,
+    "name" : "Amazon AI assistant",
+    "version" : "1.0.0",
+    "description" : "An ai assistant to help review products on Amazon.",
+    "action": {
+        "default_popup" : "popup.html"
+    },
+    "background" : {
+        "service_worker" : "background.js"
+    },
+    "permissions":[
+        "activeTab",
+        "sidePanel"
+    ]
+    
+}
