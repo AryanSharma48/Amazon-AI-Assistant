@@ -8,6 +8,12 @@ console.log('[Panel] Connected to background');
 
 document.getElementById('get-review').addEventListener('click', () => {
     console.log('[Panel] Get Reviews button clicked');
+    const responseContainer = document.getElementById('response-container');
+    const responseText = document.getElementById('response-text');
+    if (responseContainer && responseText) {
+        responseContainer.style.display = 'block';
+        responseText.innerText = 'Summarizing...';
+    }
     chrome.runtime.sendMessage({ action: 'get-reviews' });
 });
 
@@ -21,7 +27,7 @@ backgroundPort.onMessage.addListener((message) => {
         const responseText = document.getElementById('response-text');
 
         if (responseText && responseContainer) {
-            responseText.textContent = message.answer;
+            responseText.innerText = message.answer || "No summary generated.";
             responseContainer.style.display = 'block';
         } else {
             console.error('[Panel] Elements not found');

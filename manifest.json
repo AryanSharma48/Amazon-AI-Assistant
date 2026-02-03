@@ -1,8 +1,8 @@
 {
     "manifest_version" : 3,
     "name" : "Amazon AI assistant",
-    "version" : "1.0",
-    "description" : "An ai assistant to help review products on Amazon.",
+    "version" : "1.0.1",
+    "description" : "An AI assistant to summarize reviews on Amazon.",
     "action": {
         "default_popup" : "popup.html"
     },

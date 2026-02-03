@@ -57,7 +57,7 @@ const GEMINI_KEY = env.GEMINI_KEY;
 
 async function callGemini(prompt) {
   const res = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_KEY}`,
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_KEY}`,
     {
       method: 'POST',
       headers: {
@@ -83,10 +83,13 @@ async function callGemini(prompt) {
 
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   if (msg.action === 'ASK_GEMINI') {
-    const prompt = `Summarize these reviews:\n${msg.reviewArr}`;
+    const prompt = `Summarize these reviews in 150 words or less and be concise and accurate and with both pros and cons included:\n${msg.reviewArr}`;
 
     callGemini(prompt)
       .then(answer => {
+        if (!answer) {
+          answer = "Gemini returned an empty response. Please check the background console for details.";
+        }
         console.log('[Gemini] Got answer, sending to side panel');
         sendResponse({ success: true, answer });
 
@@ -103,6 +106,12 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       })
       .catch(err => {
         console.error('[Gemini] API Error:', err);
+        if (sidePanelPort) {
+          sidePanelPort.postMessage({
+            action: 'DISPLAY_SUMMARY',
+            answer: `Error: ${err.message}`
+          });
+        }
         sendResponse({ success: false, error: err.message });
       });
 
