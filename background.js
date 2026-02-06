@@ -18,7 +18,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.action === "OPEN_PANEL") {
     const targetTabId = message.tabId || sender.tab?.id;
     if (targetTabId) {
-        chrome.sidePanel.setOptions({ tabId: targetTabId, path: 'sidepanel.html', enabled: true });
+        chrome.sidePanel.setOptions({ tabId: targetTabId, path: 'side-panel/sidepanel.html', enabled: true });
         chrome.sidePanel.open({ tabId: targetTabId }).catch(err => console.error(err));
     }
   }

@@ -1,7 +1,7 @@
 # Amazon AI Assistant 
 > Built by **Aryan Sharma**
 
-A Chrome extension that helps users understand Amazon products better by **scraping product reviews** and generating concise summaries inside a **Chrome side panel**. Made to reduce the hectic task of going through hundreds of reviews manually.
+A Chrome extension made to reduce the hectic task of going through hundreds of reviews manually by generating concise summaries inside a **Chrome side panel**.
 ---
 
 ## Features
