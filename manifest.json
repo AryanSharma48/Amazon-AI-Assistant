@@ -1,10 +1,14 @@
 {
     "manifest_version" : 3,
-    "name" : "Amazon AI assistant",
-    "version" : "1.2.0",
-    "description" : "An AI assistant to summarize reviews on Amazon.",
+    "name" : "SWAN",
+    "version" : "1.2.1",
+    "description" : "Let SWAN glide effortlessly through the messy reviews to build you a perfect summary of the product.",
     "action": {
         "default_popup" : "pop-up/popup.html"
+    },
+    "icons":{
+        "32" : "assets/icon-32.png",
+        "48" : "assets/icon-48.png"
     },
     "background" : {
         "service_worker" : "background.js"

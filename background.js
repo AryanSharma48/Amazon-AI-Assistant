@@ -1,5 +1,5 @@
 let sidePanelPort = null;
-const GEMINI_KEY = env.GEMINI_KEY; 
+const GEMINI_KEY = env.GEMINI_KEY_2; 
 
 chrome.runtime.onConnect.addListener((port) => {
   if (port.name === 'sidepanel') {
@@ -59,7 +59,7 @@ async function handleGeminiRequest(reviewArr, sendResponse) {
       return;
   }
 
-  const prompt = `Summarize these reviews in 150 words or less. Be concise, accurate, and include both pros and cons:\n${reviewArr.join('\n')}`;
+  const prompt = `Summarize these reviews in 150 words or less and Be concise, accurate, and include both pros and cons:\n${reviewArr.join('\n')}`;
 
   try {
     const res = await fetch(
