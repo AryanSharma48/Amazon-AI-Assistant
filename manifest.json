@@ -12,9 +12,20 @@
     "permissions":[
         "activeTab",
         "sidePanel",
-        "scripting"
+        "scripting",
+        "tabs",
+        "storage"
     ],
+    
     "host_permissions": [
-        "https://generativelanguage.googleapis.com/*"
-    ]
+        "https://generativelanguage.googleapis.com/*",
+        "*://*.amazon.com/*",
+        "*://*.amazon.in/*"
+    ],
+    "content_scripts": [
+    {
+      "matches": ["*://*.amazon.com/*", "*://*.amazon.in/*"],
+      "js": ["content.js"]
+    }
+  ]
 }
