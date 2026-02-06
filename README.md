@@ -43,43 +43,44 @@ AI integration is configurable.
 
 Create a `.env` file in the root directory:
 
-AI_API_KEY=your_api_key_here
-⚠️ Do not commit .env files — they are ignored via .gitignore.
+GEMINI_KEY=your_api_key_here
+
+>⚠️ Do not commit .env files — they are ignored via .gitignore.
 
 ---
 
 ## Installation (Development)
 Clone the repository
 
-git clone https://github.com/AryanSharma48/amazon-ai-assistant.git
+- git clone https://github.com/AryanSharma48/amazon-ai-assistant.git
 
-Open Chrome and navigate to:
+- Open Chrome and navigate to:
 
-chrome://extensions
+- chrome://extensions
 
-Enable Developer mode (top right)
+- Enable Developer mode (top right)
 
-Click Load unpacked
+- Click Load unpacked
 
-Select the project directory
+- Select the project directory
 
-Open an Amazon product page and launch the extension
+- Open an Amazon product page and launch the extension
 
 ### Roadmap
 
- Automatic Amazon product page detection
+ - Automatic Amazon product page detection
 
- Advanced review scraping and preprocessing
+ - Advanced review scraping and preprocessing
 
- Custom ML model trained on domain-specific e-commerce data
+ - Custom ML model trained on domain-specific e-commerce data
 
 ---
 ### Notes
-This project is under active development
+>This project is under active development
 
-Scraping logic may change as Amazon updates its DOM structure
+>Scraping logic may change as Amazon updates its DOM structure
 
-AI components are modular and can be swapped or upgraded
+>AI components are modular and can be swapped or upgraded
 
 ---
 

@@ -1,0 +1,11 @@
+.summary-manual {
+    /* z-index: 9999; */
+    padding: 12px 20px;
+    background-color: #368438;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    cursor:pointer;
+    font-weight: bold;
+}

@@ -38,6 +38,18 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     handleGeminiRequest(message.reviewArr, sendResponse);
     return true; // Keep channel open for async response
   }
+
+  if (message.action === "SET_LOADING") {
+
+    chrome.storage.local.set({ 'uiState' : 'loading' });
+
+    if (sidePanelPort) {
+        sidePanelPort.postMessage({ 
+            action: 'STATUS_UPDATE', 
+            text: 'Summarizing...' 
+        });
+    }
+  }
 });
 
 async function handleGeminiRequest(reviewArr, sendResponse) {
@@ -64,11 +76,17 @@ async function handleGeminiRequest(reviewArr, sendResponse) {
 
     console.log('[Gemini] Success.');
 
+    chrome.tabs.query({ active: true, currentWindow: true }, ([tab]) => {
+        if (tab?.id) {
+            chrome.tabs.sendMessage(tab.id, { action: "SUMMARY_COMPLETE" });
+        }
+    });
+
     if (sidePanelPort) {
       sidePanelPort.postMessage({ action: 'DISPLAY_SUMMARY', answer: answer });
     }
 
-    chrome.storage.local.set({ 'latestSummary': answer });
+    chrome.storage.local.set({ 'latestSummary': answer , 'uiState' : 'ready' });
 
     sendResponse({ success: true, answer });
 
@@ -82,7 +100,7 @@ async function handleGeminiRequest(reviewArr, sendResponse) {
 
 function sendMessageWithRetry(tabId, message, retries = 10) {
   chrome.tabs.sendMessage(tabId, message)
-    .then(() => console.log('[Background] ✅ Signal delivered'))
+    .then(() => console.log('[Background] Signal delivered'))
     .catch(() => {
       if (retries > 0) setTimeout(() => sendMessageWithRetry(tabId, message, retries - 1), 1000);
     });
