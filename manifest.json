@@ -1,7 +1,7 @@
 {
     "manifest_version" : 3,
     "name" : "SWAN",
-    "version" : "1.2.1",
+    "version" : "0.2.1",
     "description" : "Let SWAN glide effortlessly through the messy reviews to build you a perfect summary of the product.",
     "action": {
         "default_popup" : "pop-up/popup.html"

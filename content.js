@@ -7,7 +7,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         if (btn) {
             btn.innerText = "Summarized!";
             setTimeout(() => {
-                btn.innerText = "Get New Summary!"; 
+                btn.innerText = "Get New Summary!";
             }, 3000);
         }
     }
@@ -18,18 +18,43 @@ function createFloatingButton() {
 
     const btn = document.createElement('button');
     btn.id = 'amazon-ai-btn';
-    btn.innerText = 'AI Summary';
+    btn.innerHTML = `
+        <span>Generate Summary</span>
+        `;
+
     Object.assign(btn.style, {
-        position: 'fixed', bottom: '25px', right: '20px', zIndex: '9999',
-        padding: '12px 20px', backgroundColor: '#368438', color: 'white',
-        border: 'none', borderRadius: '15px', boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
-        cursor: 'pointer', fontWeight: 'bold'
+        position: 'fixed',
+        bottom: '30px',
+        right: '30px',
+        zIndex: '2147483647',
+
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '12px 24px',
+        borderRadius: '9999px',
+
+        backgroundColor: '#232f3e',
+        color: '#ffffff',
+        border: '2px solid #FF9900',
+        boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
+
+
+        fontFamily: '"Amazon Ember", Arial, sans-serif',
+        fontWeight: '600',
+        fontSize: '14px',
+        letterSpacing: '0.5px',
+
+
+        boxShadow: '0 8px 20px rgba(124, 58, 237, 0.4)',
+        cursor: 'pointer',
+        transition: 'all 0.25s ease'
     });
 
     btn.addEventListener('click', () => {
         btn.innerText = 'Thinking...';
         chrome.runtime.sendMessage({ action: "OPEN_PANEL" });
-        chrome.runtime.sendMessage({ action : "SET_LOADING" });
+        chrome.runtime.sendMessage({ action: "SET_LOADING" });
         scrapeAndSend();
     });
 
