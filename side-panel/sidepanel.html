@@ -1,21 +1,51 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Amazon AI Assistant</title>
   <link rel="stylesheet" href="panel.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
-  <h2>AI Review Assistant</h2>
-  <button id="get-review" class="summary-manual">Get Summary Manually!</button>
 
-  <div id="response-container" style="display: none; margin-top: 20px;">
-    <h3>Summary</h3>
-    <p id="response-text"></p>
+  <div class="grid-bg"></div>
+
+  <nav class="top-bar">
+    <div class="logo-group">
+      <div class="symbol">⌘</div>
+      <span class="brand">SWAN</span>
+    </div>
+    <div class="status-badge">V 0.2.1</div>
+  </nav>
+
+  <div class="scroll-area">
+    <div class="content-wrapper">
+      
+      <div class="card action-card">
+        
+        <button id="get-review" class="stealth-btn">
+          <span class="btn-content">Generate Another Summary</span>
+          <div class="btn-shine"></div>
+        </button>
+      </div>
+
+      <div id="loader" class="loader-wrapper" style="display: none;">
+        <div class="scanning-line"></div>
+        <p class="mono-text">ANALYZING SENTIMENT...</p>
+      </div>
+
+      <div id="response-container" class="report-container" style="display: none;">
+        <div class="report-header">
+          <span class="report-title">SUMMARY</span>
+          <span class="timestamp">JUST NOW</span>
+        </div>
+        <div id="response-text" class="report-body">
+          </div>
+      </div>
+
+    </div>
   </div>
 
   <script src="panel.js"></script>
 </body>
-
 </html>
