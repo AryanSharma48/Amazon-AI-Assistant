@@ -1,1 +1,9 @@
-{}
+{
+  "name": "amazon-ai-assistant",
+  "version": "0.3.0",
+  "description": "Amazon Review Summarizer - SWAN",
+  "scripts": {
+    "backend-start": "npm start --prefix backend",
+    "backend-install": "npm install --prefix backend"
+  }
+}
