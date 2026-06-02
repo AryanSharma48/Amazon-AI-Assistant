@@ -31,12 +31,25 @@
         <p class="mono-text">Analyzing reviews...</p>
       </div>
 
+      <div id="error-card" class="error-wrapper" style="display: none;">
+        <div class="error-header">
+          <span class="error-icon">⚠️</span>
+          <span class="error-title">Failed to Summarize</span>
+        </div>
+        <p id="error-text" class="error-body-text">An unexpected error occurred.</p>
+        <button id="retry-btn" class="stealth-btn">Retry Scrape</button>
+      </div>
+
       <div id="response-container" class="report-container" style="display: none;">
         <div class="report-header">
           <span class="report-title">Review Summary</span>
           <span class="timestamp" id="timestamp">Just now</span>
         </div>
         <div id="response-text" class="report-body">
+        </div>
+        <div class="report-footer">
+          <button id="copy-btn" class="action-icon">📋 Copy</button>
+          <button id="get-review" class="action-icon">🔄 Re-Scan</button>
         </div>
       </div>
 
