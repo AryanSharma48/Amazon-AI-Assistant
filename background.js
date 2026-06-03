@@ -59,7 +59,7 @@ async function handleAPIRequest(reviewArr, sendResponse) {
 
   try {
     // Calling Express backend
-    const res = await fetch('https://swan-ai-assistant.onrender.com', {
+    const res = await fetch('https://swan-ai-assistant.onrender.com/api/summarize', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ reviewArr: reviewArr })
@@ -107,7 +107,20 @@ function sendMessageWithRetry(tabId, message, retries = 10) {
     });
 }
 
+let lastProductUrl = {};
+
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+  if (changeInfo.status === 'loading' && tab.url) {
+    const isAmazonProduct = tab.url.includes('/dp/') || tab.url.includes('/gp/product/');
+    if (isAmazonProduct) {
+      if (lastProductUrl[tabId] !== tab.url) {
+        lastProductUrl[tabId] = tab.url;
+        chrome.storage.local.remove(['latestSummary', 'uiState']);
+        console.log('[Background] Cleared cache for new Amazon product page:', tab.url);
+      }
+    }
+  }
+
   if (changeInfo.status === 'complete' && tab.url && (tab.url.includes('/dp/') || tab.url.includes('/gp/product/'))) {
     sendMessageWithRetry(tabId, { action: "SHOW_PROMPT" });
   }
