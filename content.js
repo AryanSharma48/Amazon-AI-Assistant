@@ -37,18 +37,25 @@ function createFloatingButton() {
         backgroundColor: '#232f3e',
         color: '#ffffff',
         border: '2px solid #FF9900',
-        boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
-
+        boxShadow: '0 4px 14px rgba(255, 153, 0, 0.3)',
 
         fontFamily: '"Amazon Ember", Arial, sans-serif',
         fontWeight: '600',
         fontSize: '14px',
         letterSpacing: '0.5px',
 
-
-        boxShadow: '0 8px 20px rgba(124, 58, 237, 0.4)',
         cursor: 'pointer',
         transition: 'all 0.25s ease'
+    });
+
+    btn.addEventListener('mouseenter', () => {
+        btn.style.transform = 'scale(1.05)';
+        btn.style.backgroundColor = '#37475a';
+    });
+
+    btn.addEventListener('mouseleave', () => {
+        btn.style.transform = 'scale(1)';
+        btn.style.backgroundColor = '#232f3e';
     });
 
     btn.addEventListener('click', () => {
