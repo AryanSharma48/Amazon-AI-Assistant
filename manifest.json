@@ -24,11 +24,34 @@
     "host_permissions": [
         "http://localhost:8080/*",
         "*://*.amazon.com/*",
-        "*://*.amazon.in/*"
+        "*://*.amazon.in/*",
+        "*://*.amazon.co.uk/*",
+        "*://*.amazon.ca/*",
+        "*://*.amazon.de/*",
+        "*://*.amazon.fr/*",
+        "*://*.amazon.it/*",
+        "*://*.amazon.es/*",
+        "*://*.amazon.co.jp/*",
+        "*://*.amazon.com.mx/*",
+        "*://*.amazon.com.br/*",
+        "*://*.amazon.com.au/*"
     ],
     "content_scripts": [
     {
-      "matches": ["*://*.amazon.com/*", "*://*.amazon.in/*"],
+      "matches": [
+        "*://*.amazon.com/*", 
+        "*://*.amazon.in/*",
+        "*://*.amazon.co.uk/*",
+        "*://*.amazon.ca/*",
+        "*://*.amazon.de/*",
+        "*://*.amazon.fr/*",
+        "*://*.amazon.it/*",
+        "*://*.amazon.es/*",
+        "*://*.amazon.co.jp/*",
+        "*://*.amazon.com.mx/*",
+        "*://*.amazon.com.br/*",
+        "*://*.amazon.com.au/*"
+      ],
       "js": ["content.js"]
     }
   ]
