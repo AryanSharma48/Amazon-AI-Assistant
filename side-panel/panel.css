@@ -323,3 +323,39 @@ body {
   font-size: 0.7rem;
   font-weight: 700;
 }
+
+/* --- Error Card --- */
+.error-wrapper {
+  background: #FFF5F5;
+  border: 1px solid #F5C2C2;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: var(--shadow-card);
+  animation: fadeUp 0.3s ease-out;
+}
+
+.error-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.error-icon {
+  font-size: 1.2rem;
+}
+
+.error-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #C53030;
+}
+
+.error-body-text {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #9B2C2C;
+  line-height: 1.5;
+}
